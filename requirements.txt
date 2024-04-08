@@ -1,0 +1,9 @@
+# List of Python packages required for the Dash app
+dash
+dash-leaflet
+dash-ag-grid
+pandas
+black
+plotly
+dash-bootstrap-components
+tqdm
