@@ -92,18 +92,18 @@ app.layout = dbc.Container(children=[
     ])
 ])
 
-
 # Callback for updating the Gantt chart and Leaflet Map based on AG-Grid selection
-@callback(
+@app.callback(
     Output('map-geojson', 'data'),
-    [Input('eis-lines-grid', 'selected_rows')]
+    [Input("eis-lines-grid", "virtualRowData"),Input('eis-lines-grid', 'selectedRowKeys')]
 )
-def update_based_on_grid_selection(selected_rows):
-    if not selected_rows:
+def update_based_on_grid_selection(rows,selected_row_keys):
+    if not selected_row_keys:
         # If no rows are selected, show default or all data
         filtered_geojson = eis_lines_geojson
     else:
         # Filter the DataFrame based on selected rows
+        selected_rows = [int(row_id) for row_id in selected_row_keys if selected_row_keys[row_id]]
         filtered_df = df_eis_lines.iloc[selected_rows]
         filtered_names = filtered_df['Name'].tolist()
         filtered_geojson = {
@@ -115,25 +115,26 @@ def update_based_on_grid_selection(selected_rows):
     # Return updated GeoJSON for the map
     return filtered_geojson
 
-# Callback for updating the Gantt chart to act as a timeline
-@callback(
+# Callback for updating the Gantt chart based on AG-Grid selection
+@app.callback(
     Output('gantt-chart', 'figure'),
-    Input('eis-lines-grid', 'selected_rows')
+    [Input("eis-lines-grid", "virtualRowData"),Input('eis-lines-grid', 'selectedRowKeys')]
 )
-def update_gantt_chart(selected_rows):
-    # If no rows are selected, use the entire dataset
-    if not selected_rows:
-        df_filtered = df_eis_lines.copy()
+def update_gantt_chart(rows, selected_row_keys):
+    if selected_row_keys:
+        selected_rows = [int(row_id) for row_id in selected_row_keys if selected_row_keys[row_id]]
+        selected_names = [df_eis_lines.iloc[i]['Name'] for i in selected_rows]
+        filtered_df = df_eis_lines[df_eis_lines['Name'].isin(selected_names)]
     else:
-        df_filtered = df_eis_lines.iloc[selected_rows].copy()
+        filtered_df = df_eis_lines
     
     # Convert date columns to datetime, handling errors
-    df_filtered['Date of NOI Publication'] = pd.to_datetime(df_filtered['Date of NOI Publication'], errors='coerce')
-    df_filtered['Date last ROD published'] = pd.to_datetime(df_filtered['Date last ROD published'], errors='coerce')
+    filtered_df['Date of NOI Publication'] = pd.to_datetime(filtered_df['Date of NOI Publication'], errors='coerce')
+    filtered_df['Date last ROD published'] = pd.to_datetime(filtered_df['Date last ROD published'], errors='coerce')
 
     # Create figure for the timeline
     fig = px.timeline(
-        df_filtered,
+        filtered_df,
         x_start='Date of NOI Publication',
         x_end='Date last ROD published',
         y='Name',
@@ -151,9 +152,6 @@ def update_gantt_chart(selected_rows):
 
     # Return the figure
     return fig
-
-
-
 
 # Run the Dash app
 if __name__ == "__main__":
