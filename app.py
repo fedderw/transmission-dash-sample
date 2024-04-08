@@ -34,51 +34,59 @@ app.layout = html.Div([
         style={'width': '100%', 'height': '50vh', 'margin': "auto", "display": "block"},
         id="leaflet-map"
     ),
-    dcc.Dropdown( # Dropdown for selecting transmission lines
-        id='line-selector',
-        options=[{'label': line, 'value': line} for line in df_eis_lines['Name'].unique()],
-        value=df_eis_lines['Name'].unique()[1], # Default value
-        style={'width': '50%', 'padding': '10px'}
-        multi=True,
-    ),
-    dag.AgGrid( # AG Grid component
+    # dcc.Dropdown( # Dropdown for selecting transmission lines
+    #     id='line-selector',
+    #     options=[{'label': line, 'value': line} for line in df_eis_lines['Name'].unique()],
+    #     value=df_eis_lines['Name'].unique()[1], # Default value
+    #     style={'width': '50%', 'padding': '10px'}
+    #     multi=True,
+    # ),
+    dag.AgGrid(
         id="eis-lines-grid",
         rowData=df_eis_lines.to_dict("records"),
-        columnDefs=[{'field': col} for col in df_eis_lines.columns], # Define columns based on dataframe
-        style={'width': '100%', 'height': '300px'}
+        columnDefs=[
+            {'field': col, 'filter': 'agTextColumnFilter', 'sortable': True}
+            for col in df_eis_lines.columns
+        ],
+        style={'width': '100%', 'height': '300px'},
+        enableFilter=True,   # Enable filtering
+        enableSorting=True,  # Enable sorting
+        rowSelection='multiple',  # Enable multiple row selection for filtering
     ),
     dcc.Graph(id='gantt-chart'), # Placeholder for Gantt chart
 ])
 
-# Callback for updating the Gantt chart based on selected line
+# Callback for updating the Gantt chart and Leaflet Map based on AG-Grid selection
 @callback(
-    Output('gantt-chart', 'figure'),
-    Input('line-selector', 'value')
+    [Output('gantt-chart', 'figure'),
+     Output('map-geojson', 'data')],
+    [Input('eis-lines-grid', 'selected_rows')]
 )
-def update_gantt_chart(selected_line):
-    # Filter data based on selected line
-    df_selected_line = df_eis_lines[df_eis_lines['Name'] == selected_line]
-    # Use "Date of NOI Publication" instead of "Start Date"
-    fig = go.Figure(data=[
-        go.Bar(x=df_selected_line['Date of NOI Publication'], y=df_selected_line['Name'])
-    ])
-    fig.update_layout(title='Gantt Chart')
-    return fig
+def update_based_on_grid_selection(selected_rows):
+    if not selected_rows:
+        # If no rows are selected, show default or all data
+        filtered_df = df_eis_lines
+        filtered_geojson = eis_lines_geojson
+    else:
+        # Filter the DataFrame based on selected rows
+        filtered_df = df_eis_lines.iloc[selected_rows]
+        filtered_names = filtered_df['Name'].tolist()
+        filtered_geojson = {
+            "type": "FeatureCollection",
+            "features": [feature for feature in eis_lines_geojson['features']
+                         if feature['properties']['Name'] in filtered_names]
+        }
 
-# Callback for updating the Leaflet Map based on selected line
-@callback(
-    Output('map-geojson', 'data'),
-    Input('line-selector', 'value')
-)
-def update_leaflet_map(selected_line):
-    # Filter GeoJSON based on selected line
-    # Example placeholder logic below
-    selected_geojson = {
-        "type": "FeatureCollection",
-        "features": [feature for feature in eis_lines_geojson['features']
-                     if feature['properties']['Name'] == selected_line]
-    }
-    return selected_geojson
+    # Update Gantt chart
+    gantt_fig = go.Figure(data=[
+        go.Bar(x=filtered_df['Date of NOI Publication'], y=filtered_df['Name'])
+    ])
+    gantt_fig.update_layout(title='Gantt Chart')
+
+    # Return updated Gantt chart and GeoJSON for the map
+    return gantt_fig, filtered_geojson
+
+
 
 # Run the Dash app
 if __name__ == "__main__":
