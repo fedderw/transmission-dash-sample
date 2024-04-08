@@ -7,3 +7,4 @@ black
 plotly
 dash-bootstrap-components
 tqdm
+geopandas
