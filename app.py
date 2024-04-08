@@ -15,22 +15,25 @@ import random  # Add this at the beginning of your script
 # Number of rows to read (including the header)
 rows_to_read = 38
 
-df_eis_lines = pd.read_csv("data/eis_lines.csv", nrows=rows_to_read, index_col=0)
+df_eis_lines = pd.read_csv(
+    "data/eis_lines.csv", nrows=rows_to_read, index_col=0
+)
 
 # Parse the GeoJSON string to a dictionary
 eis_lines_gdf = gpd.read_file("data/eis_lines.geojson")
 # Merge the GeoDataFrame with the DataFrame
 eis_lines_gdf = eis_lines_gdf.merge(df_eis_lines, on="Name")
-print(eis_lines_gdf.head(5))
+# print(eis_lines_gdf.head(5))
 # Convert the GeoDataFrame back to GeoJSON
 eis_lines_geojson = json.loads(eis_lines_gdf.to_json())
-print(type(eis_lines_geojson))
+# print(type(eis_lines_geojson))
 # Initialize Dash app
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
+
 # Function to create tooltip content
 def create_tooltip_content(feature):
-    props = feature['properties']
+    props = feature["properties"]
     tooltip_content = (
         f"Name: {props.get('Name', 'N/A')}<br/>"
         f"Category: {props.get('Category', 'N/A')}<br/>"
@@ -45,110 +48,162 @@ def create_tooltip_content(feature):
 
 # Define layout of the app
 # Define layout of the app
-app.layout = dbc.Container(children=[
-    dbc.Row([
-        dbc.Col([
-            dl.Map(
-                center=[37.0902, -95.7129],
-                zoom=4,
-                children=[
-                    dl.TileLayer(),
-                    dl.GeoJSON(
-                        data=eis_lines_geojson,
-                        id="map-geojson",
-                        children=[
-                            dl.Tooltip(
-                                children=create_tooltip_content(feature),
-                                sticky=True
-                            ) for feature in eis_lines_geojson['features']
-                        ]
-                    )
-                ],
-                style={'width': '100%', 'height': '50vh', 'margin': "auto", "display": "block"},
-                id="leaflet-map"
-            )
-        ], width=6),
-        dbc.Col([
-            dcc.Graph(id='gantt-chart')  # Placeholder for Gantt chart
-        ], width=6)
-    ]),
-    dbc.Row([
-        dbc.Col([
-            dag.AgGrid(
-                id="eis-lines-grid",
-                rowData=df_eis_lines.to_dict("records"),
-                columnDefs=[
-                    {
-                        'field': col,
-                        'filter': True,  # Enable filtering on this column
-                        'sortable': True # Enable sorting on this column
-                    }
-                    for col in df_eis_lines.columns
-                ],
-                style={'width': '100%', 'height': '300px'},
-                dashGridOptions={"rowSelection": "multiple"}  # Enable multiple row selection for filtering
-            )
-        ])
-    ])
-])
-
-# Callback for updating the Gantt chart and Leaflet Map based on AG-Grid selection
-@app.callback(
-    Output('map-geojson', 'data'),
-    [Input("eis-lines-grid", "virtualRowData"),Input('eis-lines-grid', 'selectedRowKeys')]
+app.layout = dbc.Container(
+    children=[
+        dbc.Row(
+            [
+                dbc.Col(
+                    [
+                        dl.Map(
+                            center=[37.0902, -95.7129],
+                            zoom=4,
+                            children=[
+                                dl.TileLayer(),
+                                dl.GeoJSON(
+                                    data=eis_lines_geojson,
+                                    id="map-geojson",
+                                    children=[
+                                        dl.Tooltip(
+                                            children=create_tooltip_content(
+                                                feature
+                                            ),
+                                            sticky=True,
+                                        )
+                                        for feature in eis_lines_geojson[
+                                            "features"
+                                        ]
+                                    ],
+                                ),
+                            ],
+                            style={
+                                "width": "100%",
+                                "height": "50vh",
+                                "margin": "auto",
+                                "display": "block",
+                            },
+                            id="leaflet-map",
+                        )
+                    ],
+                    width=6,
+                ),
+                dbc.Col(
+                    [
+                        dcc.Graph(
+                            id="gantt-chart"
+                        )  # Placeholder for Gantt chart
+                    ],
+                    width=6,
+                ),
+            ]
+        ),
+        dbc.Row(
+            [
+                dbc.Col(
+                    [
+                        dag.AgGrid(
+                            id="eis-lines-grid",
+                            rowData=df_eis_lines.to_dict("records"),
+                            columnDefs=[
+                                {
+                                    "field": col,
+                                    "filter": True,  # Enable filtering on this column
+                                    "sortable": True,  # Enable sorting on this column
+                                    "checkboxSelection": True if col == 'Name' else False  # Add checkbox to 'Name' column only
+                                }
+                                for col in df_eis_lines.columns
+                            ],
+                            style={"width": "100%", "height": "300px"},
+                            dashGridOptions={
+                                "rowSelection": "multiple",
+                                 "suppressRowClickSelection": True
+                            },  # Enable multiple row selection for filtering
+                        )
+                    ]
+                )
+            ]
+        ),
+    ]
 )
-def update_based_on_grid_selection(rows,selected_row_keys):
-    if not selected_row_keys:
-        # If no rows are selected, show default or all data
-        filtered_geojson = eis_lines_geojson
-    else:
-        # Filter the DataFrame based on selected rows
-        selected_rows = [int(row_id) for row_id in selected_row_keys if selected_row_keys[row_id]]
-        filtered_df = df_eis_lines.iloc[selected_rows]
-        filtered_names = filtered_df['Name'].tolist()
-        filtered_geojson = {
-            "type": "FeatureCollection",
-            "features": [feature for feature in eis_lines_geojson['features']
-                         if feature['properties']['Name'] in filtered_names]
-        }
 
-    # Return updated GeoJSON for the map
-    return filtered_geojson
-
-# Callback for updating the Gantt chart based on AG-Grid selection
 @app.callback(
-    Output('gantt-chart', 'figure'),
-    [Input("eis-lines-grid", "virtualRowData"),Input('eis-lines-grid', 'selectedRowKeys')]
+    Output("leaflet-map", "children"),
+    [
+        Input("eis-lines-grid", "virtualRowData"),
+        Input("eis-lines-grid", "selectedRows"),
+    ],
 )
-def update_gantt_chart(rows, selected_row_keys):
-    if selected_row_keys:
-        selected_rows = [int(row_id) for row_id in selected_row_keys if selected_row_keys[row_id]]
-        selected_names = [df_eis_lines.iloc[i]['Name'] for i in selected_rows]
-        filtered_df = df_eis_lines[df_eis_lines['Name'].isin(selected_names)]
-    else:
-        filtered_df = df_eis_lines
+def update_based_on_grid_selection(virtualRowData, selected_rows):
+    if selected_rows is None:
+        selected_rows = []
+    print(f"Selected Rows: {selected_rows}")
+    print(f"Virtual Row Data preview: {virtualRowData[:1]}")
     
+    selected_names = [virtualRowData[i]['Name'] for i in selected_rows] if selected_rows else []
+    print(f"Selected Names: {selected_names}")
+    if not selected_names:
+        # If no rows are selected, show all data
+        geojson_layer = dl.GeoJSON(data=eis_lines_geojson, id="geojson")
+    else:
+        # Filter the GeoJSON data based on selected rows
+        filtered_features = [
+            feature
+            for feature in eis_lines_geojson["features"]
+            if feature["properties"]["Name"] in selected_names
+        ]
+        geojson_layer = dl.GeoJSON(data={"type": "FeatureCollection", "features": filtered_features}, id="geojson")
+
+    # Return the updated children for the map
+    return [
+        dl.TileLayer(),  # Default OpenStreetMap layer
+        geojson_layer,
+    ]
+    
+    
+@app.callback(
+    Output("gantt-chart", "figure"),
+    [
+        Input("eis-lines-grid", "virtualRowData"),
+        Input("eis-lines-grid", "selectedRows"),
+    ],
+)
+def update_gantt_chart(rows, selected_rows):
+    dff = df_eis_lines if rows is None else pd.DataFrame(rows)
+    selected_names = [s["Name"] for s in selected_rows] if selected_rows else []
+
+    if selected_names:
+        filtered_df = dff[dff["Name"].isin(selected_names)]
+    else:
+        filtered_df = dff
+
     # Convert date columns to datetime, handling errors
-    filtered_df['Date of NOI Publication'] = pd.to_datetime(filtered_df['Date of NOI Publication'], errors='coerce')
-    filtered_df['Date last ROD published'] = pd.to_datetime(filtered_df['Date last ROD published'], errors='coerce')
+    filtered_df["Date of NOI Publication"] = pd.to_datetime(
+        filtered_df["Date of NOI Publication"], errors="coerce"
+    )
+    filtered_df["Date last ROD published"] = pd.to_datetime(
+        filtered_df["Date last ROD published"], errors="coerce"
+    )
 
     # Create figure for the timeline
     fig = px.timeline(
         filtered_df,
-        x_start='Date of NOI Publication',
-        x_end='Date last ROD published',
-        y='Name',
-        labels={'Name': 'Project Name'},
-        title='Project Timeline'
+        x_start="Date of NOI Publication",
+        x_end="Date last ROD published",
+        y="Name",
+        labels={"Name": "Project Name"},
+        title="Project Timeline",
     )
 
     # Update layout for better readability
-    fig.update_layout({
-        'xaxis_title': 'Date',
-        'yaxis_title': 'Project',
-        'yaxis': {'autorange': 'reversed'},  # Reverse axis so it goes top-down
-        'showlegend': False
-    })
+    fig.update_layout(
+        {
+            "xaxis_title": "Date",
+            "yaxis_title": "Project",
+            "yaxis": {
+                "autorange": "reversed"
+            },  # Reverse axis so it goes top-down
+            "showlegend": False,
+        }
+    )
 
     # Return the figure
     return fig
