@@ -1,0 +1,724 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Southline Transmission Line Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -106.25,
+            34.5
+          ],
+          [
+            -111.93,
+            34.29
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "TransWest Express Transmission Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -107.55,
+            42.97
+          ],
+          [
+            -111.67,
+            39.36
+          ],
+          [
+            -116.63,
+            39.36
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Boardman to Hemingway Transmission Line"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -120.55,
+            43.98
+          ],
+          [
+            -114.74,
+            44.57
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Big Eddy-Knight Transmission Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -120.55,
+            43.98
+          ],
+          [
+            -120.74,
+            47.04
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Susquehanna to Roseland Transmission Line"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -77.19,
+            40.87
+          ],
+          [
+            -74.67,
+            40.14
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Hampton-Rochester-La Crosse Transmission System Improvement Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -94.31,
+            45.69
+          ],
+          [
+            -89.63,
+            44.43
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Southwest Intertie Project-South"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -116.63,
+            39.36
+          ],
+          [
+            -116.53,
+            39.46
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Sun Valley to Morgan Transmission Line Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -111.93,
+            34.29
+          ],
+          [
+            -111.83000000000001,
+            34.39
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Antelope Valley Station-Neset Transmission Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -100.28,
+            47.53
+          ],
+          [
+            -100.18,
+            47.63
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Central Ferry-Lower Monumental Transmission Line Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -120.74,
+            47.04
+          ],
+          [
+            -120.64,
+            47.14
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Vantage to Pomona Heights Transmission Line Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -120.74,
+            47.04
+          ],
+          [
+            -120.64,
+            47.14
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "City of Tallahassee Southwestern Transmission Line"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -81.51,
+            27.99
+          ],
+          [
+            -81.41000000000001,
+            28.09
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Tropic to Hatch Transmission Line Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -111.67,
+            39.36
+          ],
+          [
+            -111.57000000000001,
+            39.46
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Barren Ridge Renewable Transmission Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -119.42,
+            36.78
+          ],
+          [
+            -119.32000000000001,
+            36.88
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Hooper Springs Transmission Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -114.74,
+            44.57
+          ],
+          [
+            -114.64,
+            44.67
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Bemidji - Grand Rapids Transmission Line Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -94.31,
+            45.69
+          ],
+          [
+            -94.21000000000001,
+            45.79
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Sigurd to Red Butte Transmission Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -111.67,
+            39.36
+          ],
+          [
+            -111.57000000000001,
+            39.46
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Tehachapi Renewable Transmission Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -119.42,
+            36.78
+          ],
+          [
+            -119.32000000000001,
+            36.88
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Teckla-Osage-Rapid City Transmission Line Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -107.55,
+            42.97
+          ],
+          [
+            -100.25,
+            44.5
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "New England Clean Power Link"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -72.71,
+            44.0
+          ],
+          [
+            -106.35,
+            56.13
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "SunZia Southwest Transmission Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -106.25,
+            34.5
+          ],
+          [
+            -111.93,
+            34.29
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Gateway South Transmission Project-Segment E"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -107.55,
+            42.97
+          ],
+          [
+            -105.55,
+            39.11
+          ],
+          [
+            -111.67,
+            39.36
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Surry-Skiffes Creek-Whealton Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -78.17,
+            37.52
+          ],
+          [
+            -78.07000000000001,
+            37.620000000000005
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Kake to Petersburg Transmission Intertie Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -152.4,
+            64.2
+          ],
+          [
+            -152.3,
+            64.3
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "McClellanville Transmission Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.9,
+            33.92
+          ],
+          [
+            -80.80000000000001,
+            34.02
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Great Northern Transmission Line"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -106.35,
+            56.13
+          ],
+          [
+            -94.31,
+            45.69
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Champlain Hudson Power Express"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -74.94,
+            42.95
+          ],
+          [
+            -106.35,
+            56.13
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Ten West Transmission Line Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -111.93,
+            34.29
+          ],
+          [
+            -119.42,
+            36.78
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Gateway West Transmission"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -107.55,
+            42.97
+          ],
+          [
+            -114.74,
+            44.57
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Cardinal-Hickory Creek Transmission Line Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -93.5,
+            42.07
+          ],
+          [
+            -89.63,
+            44.43
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Mona to Oquirrh Transmission Corridor Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -111.67,
+            39.36
+          ],
+          [
+            -111.57000000000001,
+            39.46
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Sunrise PowerLink Transmission Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -119.42,
+            36.78
+          ],
+          [
+            -119.32000000000001,
+            36.88
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Devers-Palo Verde No. 2 Transmission Line"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -119.42,
+            36.78
+          ],
+          [
+            -119.32000000000001,
+            36.88
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Northern Pass Transmission Line Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.57,
+            43.68
+          ],
+          [
+            -71.47,
+            43.78
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Potomac-Appalachian Transmission Highline"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.18,
+            38.48
+          ],
+          [
+            -78.17,
+            37.52
+          ],
+          [
+            -76.79,
+            39.04
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "San Luis Transmission Project"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -119.42,
+            36.78
+          ],
+          [
+            -119.32000000000001,
+            36.88
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Plains & Eastern Clean Line"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -97.09,
+            35.56
+          ],
+          [
+            -92.19,
+            34.89
+          ],
+          [
+            -86.34,
+            35.75
+          ]
+        ]
+      }
+    }
+  ]
+}

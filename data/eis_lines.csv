@@ -1,0 +1,46 @@
+,Name,Category,Line Length (mi),Dominant Line Voltage (kV),Voltage range,States,Number of States,Region,Project Drivers (As determined by CThree),Lead Federal Agency,Year project proposed,Date of NOI Publication,Year Federal EIS Issued,Date last ROD published,Time in Days (NOI to last ROD),Time in Years (NOI to last ROD),Status of NEPA review,Energized?,NEPA Trigger
+1,Southline Transmission Line Project,Interstate line,360,345,230-345,"NM,AZ",2,Non-RTO West,Generation: Renewable,BLM + DOE (WAPA),2009,4/4/2012,2015,5/16/2016,1503,4.1,Complete,Pending,Crosses Federal lands and WAPA Funding
+2,TransWest Express Transmission Project,Interstate line,732,600,600,"WY, UT, NV",3,Non-RTO West,Generation: Renewable,BLM,2007,1/4/2011,2016,6/14/2017,2353,6.4,Complete,In progress,Crosses Federal lands
+3,Boardman to Hemingway Transmission Line,Interstate line,290,500,500,"OR, ID",2,Non-RTO West,Generation: Renewable,BLM,2007,9/12/2008,2016,10/2/2019,4037,11.1,Complete,Pending,Crosses Federal lands
+4,Big Eddy-Knight Transmission Project,Interstate line,28,500,500,"OR, WA",2,Non-RTO West,Load growth/system capacity,BPA (DOE),2008,6/3/2009,2011,9/16/2011,835,2.3,Complete,Project complete (2015),BPA Owned
+5,Susquehanna to Roseland Transmission Line,Interstate line,146,500,500,"PA,NJ",2,PJM,Reliability,DOI (NPS),2009,1/21/2010,2012,10/1/2012,984,2.7,Complete,Project complete  (2015),Crosses Federal lands
+6,Hampton-Rochester-La Crosse Transmission System Improvement Project,Interstate line,141,345,161-345,"MN, WI",2,MISO,Reliability,USDA (RUS),2009,5/28/2009,2012,2/8/2013,1352,3.7,Complete,Project complete  (2016),RUS Funding
+7,Southwest Intertie Project-South,Intertie financing (Single state),235,500,500,NV,1,Non-RTO West,Generation: Renewable,DOE / BLM,1992,Not published,2010,10/26/2010,NA,NA,Complete,Project complete (2014),WAPA Funding
+8,Sun Valley to Morgan Transmission Line Project,Single state line,38,500,230-500,AZ,1,Non-RTO West,Generation: Renewable,BLM,2007,4/11/2011,2013,1/15/2014,1010,2.8,Complete,Project complete (2018),Crosses Federal lands
+9,Antelope Valley Station-Neset Transmission Project,Single state line,190,345,115-345,ND,1,MISO/SPP,Reliability,USDA(RUS),2011,11/2/2011,2014,12/8/2014,1132,3.1,Complete,Project complete (2017),RUS Funding
+10,Central Ferry-Lower Monumental Transmission Line Project,Single state line,38,500,500,WA,1,Non-RTO West,Generation: Renewable,DOE (BPA),2009,6/19/2009,2011,3/11/2011,630,1.7,Complete,Project Complete (2015),BPA Owned
+11,Vantage to Pomona Heights Transmission Line Project,Single state line,60,230,230,WA,1,Non-RTO West,Reliability,BLM,2008,1/5/2010,2016,10/16/2017,2841,7.8,Complete,Unknown,Crosses Federal lands
+12,City of Tallahassee Southwestern Transmission Line,Single state line,8,230,230,FL,1,Non-RTO South,Reliability,USDA (NFS),2010,10/14/2010,2012,3/16/2012,519,1.4,Complete,Unknown,Crosses Federal lands
+13,Tropic to Hatch Transmission Line Project,Single state line,30,138,138,UT,1,Non-RTO West,Load growth/system capacity,USDA (NFS),2008,2/21/2008,2011,9/14/2011,1301,3.6,Complete,Project complete (2019),Crosses Federal lands
+14,Barren Ridge Renewable Transmission Project,Single state line,62,230,230,CA,1,CAISO,Generation: Renewable,BLM,2008,4/7/2008,2012,6/14/2013,1894,5.2,Complete,Project complete (2016),Crosses Federal lands
+15,Hooper Springs Transmission Project,Single state line,24,115,115,ID,1,Non-RTO West,Storm/Fire hardening,DOE (BPA),2006,7/8/2010,2015,3/16/2015,1712,4.7,Complete,Project Complete (2019),BPA Owned
+16,Bemidji - Grand Rapids Transmission Line Project,Single state line,68,230,230,MN,1,MISO,Generation: Renewable,USDA (RUS),2008,7/18/2008,2010,12/2/2010,867,2.4,Complete,Project complete (2012),RUS Funding
+17,Sigurd to Red Butte Transmission Project,Single state line,172,345,345,UT,1,Non-RTO West,Generation: Renewable,BLM,2008,1/5/2010,2012,12/7/2012,1067,2.9,Complete,Project complete (2015),Crosses Federal lands
+18,Tehachapi Renewable Transmission Project,Single state line,173,500,500,CA,1,CAISO,Generation: Renewable,USDA (NFS),2004,9/7/2007,2010,10/17/14,1874,5.1,Complete,Project complete (2016),Crosses Federal lands
+19,Teckla-Osage-Rapid City Transmission Line Project,Interstate line,144,230,230,"WY,SD",2,"SPP, Non-RTO West",Load growth/system capacity,USDA (NFS),2009,8/26/2011,2014,5/19/2015,1362,3.7,Complete,Project complete (2016),Crosses Federal lands
+20,New England Clean Power Link,International Line,154,300,300,"VT, Canada",1(+Canada),ISO NE,Generation: Renewable,DOE,2013,8/26/2014,2015,12/12/2016,839,2.3,Complete,In progress,Presidential Permit
+21,SunZia Southwest Transmission Project,Interstate line,550,500,500,"NM,AZ",2,Non-RTO West,Generation: Renewable,BLM,2006,5/29/2009,2015,5/19/2023,2779,7.6,Complete,In progress,Crosses Federal lands
+22,Gateway South Transmission Project-Segment E,Interstate line,416,500,500,"WY,CO,UT",3,Non-RTO West,Generation: Renewable,BLM,2007,4/1/2011,2016,12/13/2016,2083,5.7,Complete,In progress,Crosses Federal lands
+23,Surry-Skiffes Creek-Whealton Project,Single state line,27.96,230,230-500,VA,1,PJM,Reliability,Army Corps of Engineers,2012,6/21/2019,in progress,in progress,NA,NA,Underway,Pending,Federal permit
+24,Kake to Petersburg Transmission Intertie Project,Single state line,60,138,69-138,AK,1,N/A,Generation: Nonrenewable,USDA (NFS),2010,5/7/2010,2016,11/30/2016,2399,6.6,Complete,Pending,Crosses Federal lands
+25,McClellanville Transmission Project,Single state line,20,115,115,SC,1,Non-RTO South,Reliability,USDA (RUS),2005,9/17/2010,in progress,in progress,NA,NA,Underway ,Pending,RUS Funding
+26,Great Northern Transmission Line,International Line,224,500,500,"Canada, MN",1(+Canada),MISO,Generation: Renewable,DOE,2012,6/27/2014,2015,11/22/2016,879,2.4,Complete,Project complete (2020),Presidential Permit
+27,Champlain Hudson Power Express,International Line,339,300,300-345,"NY, Canada",1(+Canada),NY ISO ,Generation: Renewable,DOE,2010,6/18/2010,2014,10/1/2014,1566,4.3,Complete,In progress,Presidential Permit
+28,Ten West Transmission Line Project,Interstate line,114,500,500,"AZ,CA",2,"CAISO, Non-RTO West",Reliability,BLM,2015,3/23/2016,2019,11/22/2019,1339,3.7,Complete,In progress,Crosses Federal lands
+29,Gateway West Transmission,Interstate line,990,500,230-500,"WY,ID",2,Non-RTO West,Generation: Renewable,BLM,2007,5/16/2008,2013,11/14/2013,2008,5.5,Complete,In progress,Crosses Federal lands
+30,Cardinal-Hickory Creek Transmission Line Project,Interstate line,102,345,345,"IA,WI",2,MISO,Reliability,USDA (RDA/RUS),2014,10/18/2016,2019,1/16/2020,1185,3.2,Complete,In progress,Crosses Federal lands
+31,Mona to Oquirrh Transmission Corridor Project,Single state line,145,345,345-500,UT,1,Non-RTO West,Generation: Renewable,BLM,2007,10/16/2007,"2010",2/10/2011,1213,3.3,Complete,Project complete (2013),Crosses Federal lands
+32,Sunrise PowerLink Transmission Project,Single state line,117,500,230-500,CA,1,CAISO,Generation: Renewable,BLM / USDA (NFS),2005,8/31/2006,2008,7/9/2010,1408,3.9,Complete,Project complete (2012),Crosses Federal lands
+33,Devers-Palo Verde No. 2 Transmission Line,Single State Line,157,500,500,CA,1,CAISO,Generation: Renewable,BLM / CPUC ,2005,12/7/2005,2006,7/19/2011,2050,5.6,Complete,Project complete (2013),Crosses Federal lands
+34,Northern Pass Transmission Line Project,International Line,192,320,320-345,NH,1(+Canada),ISO NE,Generation: Renewable,DOE,2010,2/11/2011,2017,11/22/2017,2476,6.8,Complete,Canceled,Presidential Permit
+35,Potomac-Appalachian Transmission Highline,Interstate line,290,765,765,"WV, VA, MD",3,PJM,Other,"DOI (NPS), USDA (NFS)",2007,6/17/2010,NA,NA,NA,NA,Canceled,Canceled,Crosses Federal lands
+36,San Luis Transmission Project,Single State Line,95,500,70-500,CA,1,CAISO,Generation: Renewable,DOE (WAPA),2013,11/22/2013,2016,5/9/2016,899,2.5,Complete,Canceled,WAPA proposal
+37,Plains & Eastern Clean Line,Interstate line,700,600,600,"OK,AR,TN",2-3,"SPP, MISO",Generation: Renewable,DOE,2010,12/21/2012,2015,3/31/2016,1196,3.3,Complete,Canceled,DOE participation
+,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,Footnotes:
+,Footnoted breakout ,,,,,,,,,,,,,,,,,,*Not included in EIS timeline statistics because line canceled
+EIS 1,Tehachapi Renewable Transmission Project,,,,,,,,,,,9/7/2007,,10/4/2010,1123,3.076712329,,,**Lines with two distinct EIS timelines conducted for 1 transmission project. Total length from EIS NOI to ROD is the combination of both EISs but does not count the time between publication of the first ROD and publication of the second NOI. 
+EIS 2,Tehachapi Renewable Transmission Project,,,,,,,,,,,9/26/2012,,10/17/14,751,2.057534247,,,***Multiple RODs were published in the EIS process
+,,,,,,,,,,,,,,,,,,,
+EIS 1,Sunzia,,,,,,,,,,,5/29/2009,,1/23/2015,2065,5.657534247,,,
+EIS 2,Sunzia,,,,,,,,,,,6/4/21,,5/19/23,714,1.956164384,,,
