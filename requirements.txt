@@ -8,3 +8,4 @@ plotly
 dash-bootstrap-components
 tqdm
 geopandas
+dash_mantine_components
