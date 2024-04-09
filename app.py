@@ -54,7 +54,7 @@ eis_lines_geojson = json.loads(eis_lines_gdf.to_json())
 # print(type(eis_lines_geojson))
 # Initialize Dash app
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-
+server = app.server
 
 # Function to create tooltip content
 def create_tooltip_content(feature):
