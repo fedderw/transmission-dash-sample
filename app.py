@@ -339,17 +339,17 @@ def update_gantt_chart(rows, selected_rows):
     prevent_initial_call=True,
 )
 def drawer_demo(n_clicks):
-    return 
+    return True
 
-# @app.callback(
-#     Output('modal', 'is_open'),
-#     [Input('eis-lines-grid', 'cellClicked')],
-#     [State('modal', 'is_open')],
-# )
-# def toggle_modal(cell, is_open):
-#     if cell and cell['colDef']['field'] == 'Details':
-#         return not is_open
-#     return is_open
+@app.callback(
+    Output('modal', 'is_open'),
+    [Input('eis-lines-grid', 'cellClicked')],
+    [State('modal', 'is_open')],
+)
+def toggle_modal(cell, is_open):
+    if cell and cell['colDef']['field'] == 'Details':
+        return not is_open
+    return is_open
 
 @app.callback(
     Output('debug', 'children'),
