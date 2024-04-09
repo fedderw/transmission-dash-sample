@@ -18,7 +18,7 @@
 # Potentially incorporate supplementary map layers depicting congressional districts or energy resources.
 
 # Import necessary libraries for Dash and callbacks
-from dash import Dash, html, dcc, callback, Input, Output
+from dash import Dash, html, dcc, callback, Input, Output, State
 import dash_ag_grid as dag
 import dash_leaflet as dl
 import dash_bootstrap_components as dbc
@@ -40,7 +40,9 @@ rows_to_read = 38
 df_eis_lines = pd.read_csv(
     "data/eis_lines.csv", nrows=rows_to_read, index_col=0
 )
-
+df_eis_lines_urls = pd.read_csv("data/eis_lines_urls.csv", index_col=0)
+df_eis_lines = df_eis_lines.merge(df_eis_lines_urls, left_index=True, right_index=True, suffixes=('', '_url'))
+df_eis_lines['Project'] = df_eis_lines.apply(lambda row: f"[{row['Name']}]({row['Name_url']})", axis=1)
 # Parse the GeoJSON string to a dictionary
 eis_lines_gdf = gpd.read_file("data/eis_lines.geojson")
 # Merge the GeoDataFrame with the DataFrame
@@ -54,6 +56,7 @@ eis_lines_geojson = json.loads(eis_lines_gdf.to_json())
 # print(type(eis_lines_geojson))
 # Initialize Dash app
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app.scripts.append_script({"external_url": "assets/dashAgGridComponentFunctions.js"})
 server = app.server
 
 # Function to create tooltip content
@@ -70,7 +73,35 @@ def create_tooltip_content(feature):
     )
     return tooltip_content
 
-
+columnDefs = [
+    {
+        "field": 'Project',
+        "filter": True,  # Enable filtering on this column
+        "sortable": True,  # Enable sorting on this column
+        "checkboxSelection": True,  # Add checkbox to 'Project' column only
+        "cellRenderer": "markdown",  # Add markdown renderer to 'Project' column only
+    }
+] + [
+{
+    "field": 'Details',
+    "cellRenderer": 'agGroupCellRenderer',
+    "cellRendererParams": {
+        "innerRenderer": 'buttonRenderer',
+    },
+    "cellClass": 'details-button',
+    "width": 100,
+},
+] + [
+    {
+        "field": col,
+        "filter": True,  # Enable filtering on this column
+        "sortable": True,  # Enable sorting on this column
+        "checkboxSelection": False,  # No checkbox for other columns
+        "cellRenderer": None,  # No markdown renderer for other columns
+        "hide": True if col == 'Name' else False,  # Hide 'Name' column
+    }
+    for col in df_eis_lines.columns if col != 'Project' and not col.endswith('_url')  # Exclude 'Project' and '_url' columns
+]
 # Define layout of the app
 # Define layout of the app
 app.layout = dbc.Container(
@@ -131,20 +162,13 @@ app.layout = dbc.Container(
                         dag.AgGrid(
                             id="eis-lines-grid",
                             rowData=df_eis_lines.to_dict("records"),
-                            columnDefs=[
-                                {
-                                    "field": col,
-                                    "filter": True,  # Enable filtering on this column
-                                    "sortable": True,  # Enable sorting on this column
-                                    "checkboxSelection": True if col == 'Name' else False  # Add checkbox to 'Name' column only
-                                }
-                                for col in df_eis_lines.columns
-                            ],
+                            columnDefs=columnDefs,
                             style={"width": "100%", "height": "300px"},
                             dashGridOptions={
                                 "rowSelection": "multiple",
                                  "suppressRowClickSelection": True
                             },  # Enable multiple row selection for filtering
+                            dangerously_allow_code=True,
                         )
                     ]
                 )
@@ -164,7 +188,15 @@ app.layout = dbc.Container(
                     zIndex=10000,
                 ),
             ]
-        )
+        ),
+        dbc.Modal(
+            [
+                dbc.ModalHeader("Details"),
+                dbc.ModalBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
+            ],
+            id="modal",
+        ),
+        html.Div(id='debug')
     ]
 )
 
@@ -307,7 +339,27 @@ def update_gantt_chart(rows, selected_rows):
     prevent_initial_call=True,
 )
 def drawer_demo(n_clicks):
-    return True
+    return 
+
+# @app.callback(
+#     Output('modal', 'is_open'),
+#     [Input('eis-lines-grid', 'cellClicked')],
+#     [State('modal', 'is_open')],
+# )
+# def toggle_modal(cell, is_open):
+#     if cell and cell['colDef']['field'] == 'Details':
+#         return not is_open
+#     return is_open
+
+@app.callback(
+    Output('debug', 'children'),
+    [Input('eis-lines-grid', 'cellClicked')],
+)
+def debug_cell_click(cell):
+    if cell:
+        return str(cell)
+    return "No cell clicked yet"
+
 # Run the Dash app
 if __name__ == "__main__":
     app.run_server(debug=True,dev_tools_hot_reload_watch_interval=5)
