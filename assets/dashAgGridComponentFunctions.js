@@ -49,3 +49,28 @@ dagcomponentfuncs.DBC_Button = function (props) {
     rightIcon
   )
 }
+
+dagcomponentfuncs.CustomButtonRenderer = function (params) {
+  var button = document.createElement('button')
+  button.textContent = 'Details'
+  button.addEventListener('click', function () {
+    params.api.dispatchEvent({
+      type: 'cellClicked',
+      event: event,
+      node: params.node,
+      column: params.column,
+      colDef: params.colDef,
+      data: params.data,
+      rowIndex: params.rowIndex,
+      api: params.api,
+      columnApi: params.columnApi,
+      context: params.context,
+      value: params.value
+    })
+  })
+  return button
+}
+
+function linkRenderer(params) {
+  return '<a href="' + params.value + '" target="_blank">' + params.value + '</a>';
+}
