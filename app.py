@@ -81,6 +81,7 @@ nepa_triggers = df_eis_lines['NEPA Trigger'].unique()
 regions = df_eis_lines['Region'].unique()
 project_drivers = df_eis_lines['Project Drivers (As determined by CThree)'].unique()
 nepa_status = df_eis_lines['Status of NEPA review'].unique()
+nepa_status = df_eis_lines['Status of NEPA review'].unique()
 def create_chip_group_container(title, id, items):
     return dmc.Container(
         [
@@ -104,17 +105,23 @@ def create_chip_group_container(title, id, items):
         # className="col-md-6",
     )
 
-# Step 2: Create a dmc.Grid with dmc.Container for each unique category
-chip_grid = dmc.Grid(
+# Step 2: Create a dbc.Collapse with dmc.Container for each unique category
+chip_collapse = dbc.Collapse(
     [
         create_chip_group_container("NEPA Trigger", "nepa-trigger-chips", nepa_triggers),
         create_chip_group_container("Region", "region-chips", regions),
         create_chip_group_container("Project Drivers", "project-driver-chips", project_drivers),
         create_chip_group_container("NEPA Status", "nepa-status-chips", nepa_status),
     ],
-    justify="left",
-    align="left",
-    # spacing=4,
+    id="chip-collapse",
+    is_open=False,
+)
+
+chip_filter=html.Div(
+    [
+        dbc.Button("Quick Filter Options", id="chip-collapse-button", className="mb-3", color="primary", n_clicks=0),
+        chip_collapse,
+    ]
 )
 
 # Function to create tooltip content
@@ -235,7 +242,7 @@ app.layout = dbc.Container(
             ]
         ),
         html.Div(style={"height": "30px"}),  # Add space between rows
-        dbc.Row(chip_grid),
+        dbc.Row(chip_filter),
         dbc.Row(
             [
                 dbc.Col(
@@ -607,7 +614,8 @@ def toggle_modal(cell, is_open):
         bar_chart_time.update_layout(
             title="Time in Days (NOI to last ROD) Comparison",
             xaxis_title="Project",
-            yaxis_title="Time in Days (NOI to last ROD)"
+            yaxis_title="Time in Days (NOI to last ROD)",
+            showlegend=False,
         )
 
         bar_chart_time_component = dcc.Graph(figure=bar_chart_time)
@@ -675,6 +683,17 @@ def update_grid_based_on_selections(nepa_triggers, regions, project_drivers, nep
         ],
     }
     return model
+
+
+@app.callback(
+    Output("chip-collapse", "is_open"),
+    [Input("chip-collapse-button", "n_clicks")],
+    [State("chip-collapse", "is_open")],
+)
+def toggle_collapse(n, is_open):
+    if n:
+        return not is_open
+    return is_open
 
 # Run the Dash app
 if __name__ == "__main__":
